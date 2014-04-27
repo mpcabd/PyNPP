@@ -22,6 +22,7 @@
 #include "AboutDlg.h"
 #include <string>
 #include <sstream>
+#include <map>
 using namespace std;
 #include <windows.h>
 
@@ -33,6 +34,7 @@ FuncItem funcItem[nbFunc];
 //
 // The data of Notepad++ that you can use in your plugin commands
 //
+map<std::wstring, PROCESS_INFORMATION> pi_map;
 
 
 void pluginInit(HANDLE hModule)
@@ -160,7 +162,17 @@ bool launchPython(std::wstring &command, std::wstring &path)
 	memset(&pi, 0, sizeof(pi));
 	si.cb = sizeof(si);
 
-	return CreateProcess(
+	bool ok = false;
+	std::wstring filename = getCurrentFile(ok);
+	if (ok) {
+		map<std::wstring, PROCESS_INFORMATION>::iterator it = pi_map.find(filename);
+		if (it != pi_map.end()) {
+			TerminateProcess(it->second.hProcess, 1);
+			pi_map.erase(it);
+		}
+	}
+
+	bool result = CreateProcess(
 		NULL,
 		const_cast<LPWSTR>(command.c_str()),
 		NULL,
@@ -171,6 +183,11 @@ bool launchPython(std::wstring &command, std::wstring &path)
 		path.c_str(),
 		&si,
 		&pi) != 0;
+
+	if (result)
+		pi_map[filename] = pi;
+
+	return result;
 }
 
 void run(bool isW, bool isI) {
