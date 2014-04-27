@@ -5,7 +5,7 @@ http://mpcabd.igeex.biz/notepad-plugin-to-run-python-scripts/
 This work is licensed under [GNU General Public License v3](http://www.gnu.org/licenses/gpl.txt).
 
 #    Download
-*    Binary:  		https://github.com/downloads/mpcabd/PyNPP/PyNPP.dll
+*    Binary:  		https://github.com/mpcabd/PyNPP/releases/download/v1.1/PyNPP.dll
 *    Source Code:  	https://github.com/mpcabd/PyNPP/tarball/master
 
 #    Contact
