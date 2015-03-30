@@ -22,7 +22,7 @@
 
 const TCHAR NPP_PLUGIN_NAME[] = TEXT("PyNPP");
 
-const int nbFunc = 6;
+const int nbFunc = 7;
 
 
 //
@@ -57,8 +57,10 @@ bool setCommand(size_t index, TCHAR *cmdName, PFUNCPLUGINCMD pFunc, ShortcutKey 
 // Your plugin command functions
 //
 void runFile();
+void runFilePDB();
 void runFileInteractive();
 void runFileW();
+void runFileWPDB();
 void run(bool isW);
 void showOptionsDlg();
 void showAboutDlg();

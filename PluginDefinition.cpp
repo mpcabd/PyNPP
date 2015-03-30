@@ -48,31 +48,35 @@ void pluginCleanUp()
 
 void commandMenuInit()
 {
+	int idx = 0;
 	ShortcutKey* key = new ShortcutKey();
 	key->_isAlt = true;
 	key->_isCtrl = true;
 	key->_isShift = false;
 	key->_key = 0x74; //F5
-	setCommand(0, TEXT("Run file in Python"), runFile, key, false);
+	setCommand(idx++, TEXT("Run file in Python"), runFile, key, false);
 
 	key = new ShortcutKey();
 	key->_isAlt = true;
 	key->_isCtrl = false;
 	key->_isShift = true;
 	key->_key = 0x74;
-	setCommand(1, TEXT("Run file in Python Interactive"), runFileInteractive, key, false);
+	setCommand(idx++, TEXT("Run file in Python Interactive"), runFileInteractive, key, false);
 
 	key = new ShortcutKey();
 	key->_isAlt = true;
 	key->_isCtrl = true;
 	key->_isShift = true;
 	key->_key = 0x74;
-	setCommand(2, TEXT("Run file in PythonW"), runFileW, key, false);
+	setCommand(idx++, TEXT("Run file in PythonW"), runFileW, key, false);
 
-	lstrcpy(funcItem[3]._itemName, TEXT("-SEPARATOR-"));
+	key = new ShortcutKey();
+	setCommand(idx++, TEXT("Debug the file (PDB)"), runFilePDB, key, false);
 
-	setCommand(4, TEXT("Options"), showOptionsDlg, 0, false);
-	setCommand(5, TEXT("About PyNPP"), showAboutDlg, 0, false);
+	lstrcpy(funcItem[idx++]._itemName, TEXT("-SEPARATOR-"));
+
+	setCommand(idx++, TEXT("Options"), showOptionsDlg, 0, false);
+	setCommand(idx++, TEXT("About PyNPP"), showAboutDlg, 0, false);
 }
 
 void commandMenuCleanUp()
@@ -137,7 +141,7 @@ std::wstring getCurrentFile(bool &ok)
 	return wPath;
 }
 
-std::wstring buildRunCommand(std::wstring &filePath, std::wstring &pypath, bool isW = false, bool isI = false)
+std::wstring buildRunCommand(std::wstring &filePath, std::wstring &pypath, bool isW = false, bool isI = false, bool isPDB = false)
 {
 	std::wstring command = pypath;
 	if (command[command.length() - 1] != '\\')
@@ -148,6 +152,8 @@ std::wstring buildRunCommand(std::wstring &filePath, std::wstring &pypath, bool 
 	command += TEXT(".exe ");
 	if (isI)
 		command += TEXT("-i ");
+	if (isPDB)
+		command += TEXT("-m pdb ");
 	command += TEXT("\"");
 	command += filePath;
 	command += TEXT("\"");
@@ -190,7 +196,7 @@ bool launchPython(std::wstring &command, std::wstring &path)
 	return result;
 }
 
-void run(bool isW, bool isI) {
+void run(bool isW, bool isI, bool isPDB) {
 	std::wstring pythonLoc = pythonPath;
 
 	if(pythonPath == L"")
@@ -210,7 +216,7 @@ void run(bool isW, bool isI) {
 				break;
 			}
 		}
-		std::wstring command = buildRunCommand(file, pythonLoc, isW, isI);
+		std::wstring command = buildRunCommand(file, pythonLoc, isW, isI, isPDB);
 
 		if(!launchPython(command, path)) {
 			int errorCode = GetLastError();
@@ -233,13 +239,17 @@ void run(bool isW, bool isI) {
 }
 
 void runFile() {
-	run(false, false);
+	run(false, false, false);
 }
 
 void runFileInteractive() {
-	run(false, true);
+	run(false, true, false);
 }
 
 void runFileW() {
-	run(true, false);
+	run(true, false, false);
+}
+
+void runFilePDB() {
+	run(false, false, true);
 }

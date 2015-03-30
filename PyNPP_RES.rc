@@ -7,7 +7,8 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
+#include "WinResrc.h"
+#define IDC_STATIC  -1
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
@@ -70,7 +71,7 @@ CAPTION "About PyNPP"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,51,82,50,14
-    CTEXT           "PyNPP\nA Notepad++ plugin to run Python scripts from inside Notepad++.\n\nCreated by\nAbd Allah Diab\nmpcabd@gmail.com\nhttp://mpcabd.igeex.biz",IDC_STATIC,7,7,136,72
+    CTEXT           "PyNPP\nA Notepad++ plugin to run Python scripts from inside Notepad++.\n\nCreated by\nAbdullah Diab\nmpcabd@gmail.com\nhttp://mpcabd.igeex.biz",IDC_STATIC,7,7,135,72
 END
 
 
