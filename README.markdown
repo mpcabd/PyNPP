@@ -1,5 +1,5 @@
 A Notepad++ plugin to run Python scripts
-http://mpcabd.igeex.biz/notepad-plugin-to-run-python-scripts/
+http://mpcabd.xyz/notepad-plugin-to-run-python-scripts/
 
 #    License
 This work is licensed under [GNU General Public License v3](http://www.gnu.org/licenses/gpl.txt).
@@ -11,4 +11,4 @@ This work is licensed under [GNU General Public License v3](http://www.gnu.org/l
 #    Contact
 *    Abdullah Diab (mpcabd)
 *    Email: 	mpcabd {AT} G Mail (dot) COM
-*    Blog:	http://mpcabd.igeex.biz
+*    Blog:	http://mpcabd.xyz
