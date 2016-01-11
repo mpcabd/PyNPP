@@ -2,5 +2,6 @@
 Debug/
 PyNPP.vcxproj.filters
 PyNPP.vcxproj.user
+PyNPP.sdf
 *.aps
 Release/
