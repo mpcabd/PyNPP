@@ -7,8 +7,7 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "WinResrc.h"
-#define IDC_STATIC  -1
+#include "afxres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
@@ -17,10 +16,8 @@
 // Arabic (Syria) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ARS)
-#ifdef _WIN32
 LANGUAGE LANG_ARABIC, SUBLANG_ARABIC_SYRIA
 #pragma code_page(1256)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -65,13 +62,13 @@ BEGIN
     LTEXT           "Python Folder",IDC_STATIC_PATH,7,9,46,8
 END
 
-IDD_ABOUT_DIALOG DIALOGEX 0, 0, 150, 103
+IDD_ABOUT_DIALOG DIALOGEX 0, 0, 151, 132
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About PyNPP"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,51,82,50,14
-    CTEXT           "PyNPP\nA Notepad++ plugin to run Python scripts from inside Notepad++.\n\nCreated by\nAbdullah Diab\nmpcabd@gmail.com\nhttp://mpcabd.igeex.biz",IDC_STATIC,7,7,135,72
+    DEFPUSHBUTTON   "OK",IDOK,51,111,50,14
+    CTEXT           "PyNPP v.1.2.1\n\nA Notepad++ plugin to run Python scripts from inside Notepad++.\n\nCreated by\n\nAbdullah Diab\nmpcabd@gmail.com\nhttp://mpcabd.xyz\n\nhttps://github.com/mpcabd/PyNPP",IDC_STATIC,7,7,135,103
 END
 
 
@@ -81,7 +78,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_OPTIONS_DIALOG, DIALOG
     BEGIN
@@ -94,12 +91,23 @@ BEGIN
     IDD_ABOUT_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 143
+        RIGHTMARGIN, 144
         TOPMARGIN, 7
-        BOTTOMMARGIN, 96
+        BOTTOMMARGIN, 125
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUT_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
 
 #endif    // Arabic (Syria) resources
 /////////////////////////////////////////////////////////////////////////////
