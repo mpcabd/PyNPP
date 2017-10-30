@@ -97,6 +97,8 @@ wstring GetPythonPath() {
 				pythonInstalled = true;
 				break;
 			}
+
+			delete[] nPtr;
 		} while (FindNextFile(h, &data));
 	}
 
